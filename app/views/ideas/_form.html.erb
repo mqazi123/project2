@@ -1,0 +1,38 @@
+<%= form_for(@idea) do |f| %>
+<% if @idea.errors.any? %>
+<div id="error_explanation">
+<h2><%= pluralize(@idea.errors.count, "error") %>
+prohibited this product from being saved:</h2>
+<ul>
+<% @idea.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+
+<div class="field">
+<%= f.label :title %><br>
+<%= f.text_field :title %>
+</div>
+
+<div class="field">
+<%= f.label :platform %><br>
+<%= f.text_field :platform %>
+</div>
+
+<div class="field">
+<%= f.label :description %><br>
+<%= f.text_area :description, rows: 6 %>
+</div>
+
+<div class="field">
+<%= f.label :help_needed? %><br>
+<%= f.text_field :help_needed %>
+</div>
+
+<div class="actions">
+<%= f.submit %>
+</div>
+
+<% end %>

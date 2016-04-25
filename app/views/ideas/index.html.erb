@@ -1,0 +1,21 @@
+<h1>Listing Ideas</h1>
+<table>
+<% @ideas.each do |idea| %>
+<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+<td class="list_description">
+<dl>
+<dt><%= idea.title %></dt>
+<dd><%= truncate(strip_tags(idea.description), length: 80) %></dd>
+</dl>
+</td>
+<td class="list_actions">
+<%= link_to 'Show', idea %><br/>
+<%= link_to 'Edit', edit_idea_path(idea) %><br/>
+<%= link_to 'Destroy', idea, method: :delete,
+data: { confirm: 'Are you sure?' } %>
+</td>
+</tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'New Idea', new_idea_path %>
