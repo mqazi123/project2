@@ -11,3 +11,9 @@ two:
   platform: MyString
   description: MyText
   help_needed: MyString
+  
+ruby:
+  title: apllication
+  platform: ruby
+  description: dynamic coding
+  help_needed: designer

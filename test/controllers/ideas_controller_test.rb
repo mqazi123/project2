@@ -3,6 +3,13 @@ require 'test_helper'
 class IdeasControllerTest < ActionController::TestCase
   setup do
     @idea = ideas(:one)
+    @update = {
+      title: 'Idea Management',
+      platform: 'Ubuntu',
+      description: 'Idea Hub',
+      help_needed: 'designer required'
+      
+    }
   end
 
   test "should get index" do
@@ -18,7 +25,7 @@ class IdeasControllerTest < ActionController::TestCase
 
   test "should create idea" do
     assert_difference('Idea.count') do
-      post :create, idea: { description: @idea.description, help_needed: @idea.help_needed, platform: @idea.platform, title: @idea.title }
+      post :create, idea: @update
     end
 
     assert_redirected_to idea_path(assigns(:idea))
@@ -28,17 +35,18 @@ class IdeasControllerTest < ActionController::TestCase
     get :show, id: @idea
     assert_response :success
   end
+ 
 
   test "should get edit" do
     get :edit, id: @idea
     assert_response :success
   end
-
+#...
   test "should update idea" do
-    patch :update, id: @idea, idea: { description: @idea.description, help_needed: @idea.help_needed, platform: @idea.platform, title: @idea.title }
+    patch :update, id: @idea, idea: @update
     assert_redirected_to idea_path(assigns(:idea))
   end
-
+#...
   test "should destroy idea" do
     assert_difference('Idea.count', -1) do
       delete :destroy, id: @idea
